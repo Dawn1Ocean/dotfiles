@@ -171,3 +171,15 @@ The original config files are at `~/.config/satty`.
 cd dotfiles
 stow --dotfiles satty
 ```
+
+# Fish
+
+The original config files are at `~/.config/fish`.
+
+## Deploy
+
+```sh
+cd dotfiles
+stow --dotfiles fish
+fisher update
+```

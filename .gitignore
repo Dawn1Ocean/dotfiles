@@ -1,5 +1,12 @@
 niri/.config/niri/dms/colors.kdl
 niri/.config/DankMaterialShell/plugins/.repos
+
 kitty/.config/kitty/current-theme.conf
 kitty/.config/kitty/dank-tabs.conf
 kitty/.config/kitty/dank-theme.conf
+
+fish/.config/fish/fish_variables
+fish/.config/fish/fish_history
+fish/.config/fish/generated_completions
+
+.DS_Store
