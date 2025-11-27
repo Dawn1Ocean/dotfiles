@@ -65,38 +65,10 @@ The original config files are at `~/.config/kitty`.
 
 Using default dark theme and customized default light theme.
 
-I wrote a script to monitor changes in the system `color-scheme` and adjust Kitty's theme accordingly.
-
-```sh
-#!/bin/bash
-
-LIGHT_THEME="$HOME/.config/kitty/themes/Light_Default.conf"
-DARK_THEME="$HOME/.config/kitty/Default.conf"
-
-function update_all_kitties() {
-    local THEME_FILE=$1
-
-    grep -aPo '@mykitty[^\s]*' /proc/net/unix | sort | uniq | while read -r socket_path; do
-        kitty @ --to "unix:$socket_path" set-colors --all --configured "$THEME_FILE" 2>/dev/null
-    done
-}
-
-current_mode=$(gsettings get org.gnome.desktop.interface color-scheme)
-
-if [[ "$current_mode" == "'prefer-dark'" ]]; then
-    update_all_kitties "$DARK_THEME"
-else
-    update_all_kitties "$LIGHT_THEME"
-fi
-
-gsettings monitor org.gnome.desktop.interface color-scheme | while read -r line; do
-    if [[ "$line" == *"prefer-dark"* ]]; then
-        update_all_kitties "$DARK_THEME"
-    else
-        update_all_kitties "$LIGHT_THEME"
-    fi
-done
-```
+To automatically switch kitty themes between light and dark mode, make sure these files exist:
+- `.config/kitty/dark-theme.auto.conf`: `color-scheme` == `'prefer-dark'`
+- `.config/kitty/light-theme.auto.conf`: `color-scheme` == `'prefer-light'`
+- `.config/kitty/no-preference-theme.auto.conf`: `color-scheme` == `'default'`
 
 ## Deploy
 
@@ -119,6 +91,8 @@ The original script directories are `~/.local/share/dark-mode.d` and `~/.local/s
 I wrote a script to restart and change the icons of dms monitor changes in the system `color-scheme` and adjust Kitty's theme accordingly.
 
 > Currently dms has a bug that the first attempt after initialization to restart dms will fail, thus the script will restart dms twice at session startup.
+
+> Currently dms has a bug that the system tray widget might be failed to recover after dms restarts.
 
 ```sh
 #!/bin/bash
@@ -144,9 +118,30 @@ else
 fi
 ```
 
+If you are not concerned about the color of the icon, use this script instead, it's way more faster and smoother. (Default)
+
+```sh
+#!/bin/bash
+
+dms ipc call theme dark
+niri msg action do-screen-transition -d 500 &
+sed -i 's/^icon_theme=.*/icon_theme=breeze-dark/' ~/.config/qt6ct/qt6ct.conf
+
+```
+
 ## Deploy
 
 ```sh
 cd dotfiles
+stow --dotfiles darkman
+```
+
+(If using the Icon-chaning scripts)
+```sh
+cd dotfiles
+mv darkman/.local/share/dark-mode.d/10-set-theme.sh darkman/.local/share/dark-mode.d/10-set-theme.sh.bak
+mv darkman/.local/share/light-mode.d/10-set-theme.sh darkman/.local/share/light-mode.d/10-set-theme.sh.bak
+mv darkman/.local/share/dark-mode.d/10-set-theme-icon.sh.bak darkman/.local/share/dark-mode.d/10-set-theme-icon.sh
+mv darkman/.local/share/light-mode.d/10-set-theme-icon.sh.bak darkman/.local/share/light-mode.d/10-set-theme-icon.sh
 stow --dotfiles darkman
 ```

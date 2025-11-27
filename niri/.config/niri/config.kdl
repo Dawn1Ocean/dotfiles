@@ -6,6 +6,7 @@
 environment {
     QT_QPA_PLATFORMTHEME "qt6ct"
     XDG_MENU_PREFIX "arch-"
+    DMS_SCREENSHOT_EDITOR "satty"
 }
 
 // Put DMS Wallpaper inside the overview backdrop.
@@ -114,7 +115,7 @@ output "eDP-2" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    position x=1463 y=0
 }
 
 cursor {
@@ -292,12 +293,12 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "/usr/bin/dms" "run" "--session"
-spawn-at-startup "~/.local/bin/kitty-theme-auto-switch.sh"
 spawn-at-startup "/usr/lib/pam_kwallet_init"
 spawn-at-startup "/usr/lib/xdg-desktop-portal"
 spawn-at-startup "/usr/lib/xdg-desktop-portal-gtk"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "xhost" "+si:localuser:root"
+spawn-at-startup "fcitx5" "--replace" "-d"
 spawn-sh-at-startup "darkman run &"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -305,7 +306,7 @@ spawn-sh-at-startup "darkman run &"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    skip-at-startup
+    // skip-at-startup
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -340,9 +341,14 @@ animations {
 
 window-rule {
     match app-id="satty"
-//    open-floating true
+//  open-floating true
     open-fullscreen true
     open-focused true
+}
+
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    open-floating true
 }
 
 // Work around WezTerm's initial configure bug
@@ -397,18 +403,20 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
-
+ 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty" "--single-instance"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Mod+V { spawn "sh" "-c" "cliphist list | fuzzel -d -w 40 --lines 10 | cliphist decode | wl-copy"; }
-    Mod+E { spawn "dolphin"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: dms lock" { spawn "dms" "ipc" "call" "lock" "lock"; }
+    Mod+V hotkey-overlay-title="Open Clipboard: dms"{ spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Mod+E hotkey-overlay-title="Open a File Manager: dolphin"{ spawn "dolphin"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+
+    Mod+Space hotkey-overlay-title="Open Spotlight:dms" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -617,7 +625,7 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+P       { toggle-window-floating; }
+    Mod+P  hotkey-overlay-title="Toggle Floating"     { toggle-window-floating; }
     Mod+Shift+P { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
@@ -633,7 +641,8 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Mod+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty --filename -"; }
+    Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty --filename -"; }
+    // Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn-sh "niri msg action screenshot && wl-paste | satty --filename -"; } 
 
     // Print { screenshot; }
     // Ctrl+Print { screenshot-screen; }

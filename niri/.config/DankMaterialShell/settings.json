@@ -119,7 +119,10 @@
       "id": "systemTray",
       "enabled": true
     },
-    "clipboard",
+    {
+      "id": "clipboard",
+      "enabled": true
+    },
     "cpuUsage",
     "memUsage",
     "notificationButton",
