@@ -35,3 +35,26 @@ output "eDP-1" {
 cd dotfiles
 stow --dotfiles niri
 ```
+
+# Nvim
+
+Inspired by [MartinLwx](https://martinlwx.github.io/zh-cn/config-neovim-from-scratch/). Thanks!
+
+The original config files are at `~/.config/nvim`.
+
+Plugins (managed by `lazy.nvim`):
+- `"catppuccin/nvim"`: Nvim Theme 
+- `"lukas-reineke/indent-blankline.nvim"`: Indent Blankline
+- `"ethanholz/nvim-lastplace"`: Intelligently reopens files at your last edit position
+- `"onsails/lspkind.nvim"`: Vscode-like pictograms 
+- `"saghen/blink.cmp"`: Auto-completion engine
+- `"L3MON4D3/LuaSnip"`: Code snippet engine
+- `"mason-org/mason.nvim"`, `"neovim/nvim-lspconfig"`: LSP manager
+- `"xiyaowong/transparent.nvim"`: Transparent background
+
+## Apply
+
+```sh
+cd dotfiles
+stow --dotfiles nvim
+```
