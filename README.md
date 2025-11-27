@@ -29,7 +29,7 @@ output "eDP-1" {
 // ...
 ```
 
-## Apply
+## Deploy
 
 ```sh
 cd dotfiles
@@ -52,7 +52,7 @@ Plugins (managed by `lazy.nvim`):
 - `"mason-org/mason.nvim"`, `"neovim/nvim-lspconfig"`: LSP manager
 - `"xiyaowong/transparent.nvim"`: Transparent background
 
-## Apply
+## Deploy
 
 ```sh
 cd dotfiles
@@ -67,7 +67,39 @@ Using default dark theme and customized default light theme.
 
 I wrote a script to monitor changes in the system `color-scheme` and adjust Kitty's theme accordingly.
 
-## Apply
+```sh
+#!/bin/bash
+
+LIGHT_THEME="$HOME/.config/kitty/themes/Light_Default.conf"
+DARK_THEME="$HOME/.config/kitty/Default.conf"
+
+function update_all_kitties() {
+    local THEME_FILE=$1
+
+    grep -aPo '@mykitty[^\s]*' /proc/net/unix | sort | uniq | while read -r socket_path; do
+        kitty @ --to "unix:$socket_path" set-colors --all --configured "$THEME_FILE" 2>/dev/null
+    done
+}
+
+current_mode=$(gsettings get org.gnome.desktop.interface color-scheme)
+
+if [[ "$current_mode" == "'prefer-dark'" ]]; then
+    update_all_kitties "$DARK_THEME"
+else
+    update_all_kitties "$LIGHT_THEME"
+fi
+
+gsettings monitor org.gnome.desktop.interface color-scheme | while read -r line; do
+    if [[ "$line" == *"prefer-dark"* ]]; then
+        update_all_kitties "$DARK_THEME"
+    else
+        update_all_kitties "$LIGHT_THEME"
+    fi
+done
+```
+
+## Deploy
+
 ```sh
 cd dotfiles
 stow --dotfiles kitty
@@ -78,4 +110,43 @@ Add `spawn-at-startup` in `.config/niri/config.kdl`:
 // ...
 spawn-at-startup "~/.local/bin/kitty-theme-auto-switch.sh"
 // ...
+```
+
+# Darkman
+
+The original script directories are `~/.local/share/dark-mode.d` and `~/.local/share/light-mode.d`.
+
+I wrote a script to restart and change the icons of dms monitor changes in the system `color-scheme` and adjust Kitty's theme accordingly.
+
+> Currently dms has a bug that the first attempt after initialization to restart dms will fail, thus the script will restart dms twice at session startup.
+
+```sh
+#!/bin/bash
+INIT_FLAG="/tmp/dms_theme_initialized"
+
+try_restart_dms() {
+    dms restart
+    sleep 0.2
+    dms ipc call theme dark
+}
+
+sed -i 's/^icon_theme=.*/icon_theme=breeze-dark/' ~/.config/qt6ct/qt6ct.conf
+
+niri msg action do-screen-transition -d 2500 &
+sleep 0.01
+
+if [ ! -f "$INIT_FLAG" ]; then
+    try_restart_dms
+    try_restart_dms
+    touch "$INIT_FLAG"
+else
+    try_restart_dms
+fi
+```
+
+## Deploy
+
+```sh
+cd dotfiles
+stow --dotfiles darkman
 ```
