@@ -58,3 +58,24 @@ Plugins (managed by `lazy.nvim`):
 cd dotfiles
 stow --dotfiles nvim
 ```
+
+# Kitty
+
+The original config files are at `~/.config/kitty`.
+
+Using default dark theme and customized default light theme.
+
+I wrote a script to monitor changes in the system `color-scheme` and adjust Kitty's theme accordingly.
+
+## Apply
+```sh
+cd dotfiles
+stow --dotfiles kitty
+```
+
+Add `spawn-at-startup` in `.config/niri/config.kdl`:
+```kdl
+// ...
+spawn-at-startup "~/.local/bin/kitty-theme-auto-switch.sh"
+// ...
+```
