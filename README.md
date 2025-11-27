@@ -160,3 +160,14 @@ The original config files are at `~/.config/fuzzel`.
 cd dotfiles
 stow --dotfiles fuzzel
 ```
+
+# Satty
+
+The original config files are at `~/.config/satty`.
+
+## Deploy
+
+```sh
+cd dotfiles
+stow --dotfiles satty
+```
