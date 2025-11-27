@@ -147,3 +147,16 @@ mv darkman/.local/share/dark-mode.d/10-set-theme-icon.sh.bak darkman/.local/shar
 mv darkman/.local/share/light-mode.d/10-set-theme-icon.sh.bak darkman/.local/share/light-mode.d/10-set-theme-icon.sh
 stow --dotfiles darkman
 ```
+
+# Fuzzel
+
+![Fuzzel](img/fuzzel.png)
+
+The original config files are at `~/.config/fuzzel`.
+
+## Deploy
+
+```sh
+cd dotfiles
+stow --dotfiles fuzzel
+```
