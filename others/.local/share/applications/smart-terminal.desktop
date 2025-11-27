@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Smart Terminal (Niri / KDE)
+Comment=Opens Kitty in Niri, Konsole in KDE
+Exec=bash -c /home/dean/.local/bin/smart-terminal.sh %f
+Icon=utilities-terminal
+Type=Application
+Categories=System;TerminalEmulator;
+Terminal=false

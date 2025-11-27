@@ -183,3 +183,42 @@ cd dotfiles
 stow --dotfiles fish
 fisher update
 ```
+
+# Others
+
+In Dolphin (KDE Plasma), we can use `Alt + Shift + F4` to Open Terminal in current folder, and the default terminal is Konsole.
+
+In Niri, we want to open current folder with Kitty. I wrote a script and context menu to do this.
+
+```sh
+#!/bin/bash
+
+if [[ "$XDG_CURRENT_DESKTOP" == *"niri"* ]] || [[ "$XDG_SESSION_DESKTOP" == *"niri"* ]]; then
+    exec kitty "${@/--workdir/--directory}"
+else
+    exec konsole "$@"
+fi
+```
+
+```desktop
+[Desktop Entry]
+Name=Smart Terminal (Niri / KDE)
+Comment=Opens Kitty in Niri, Konsole in KDE
+Exec=bash -c /home/dean/.local/bin/smart-terminal.sh %f
+Icon=utilities-terminal
+Type=Application
+Categories=System;TerminalEmulator;
+Terminal=false
+```
+
+## Deploy
+
+```sh
+cd dotfiles
+stow --dotfiles others
+kcmshell6 componentchooser
+```
+
+In the componentchooser window, choose Terminal Simulator to `Smart Terminal (Niri / KDE)`.
+
+![componentchooser](img/kcmshell.png)
