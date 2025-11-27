@@ -6,6 +6,9 @@ Using `GNU stow` to manage.
 
 # Niri & DMS
 
+![Niri in lightmode](img/niri-light.png)
+![Niri in darkmode](img/niri-dark.png)
+
 The original config files are at `~/.config/niri`.
 
 Packages（in `paru`）:
@@ -40,6 +43,9 @@ stow --dotfiles niri
 
 Inspired by [MartinLwx](https://martinlwx.github.io/zh-cn/config-neovim-from-scratch/). Thanks!
 
+![Nvim in lightmode](img/nvim-light.png)
+![Nvim in darkmode](img/nvim-dark.png)
+
 The original config files are at `~/.config/nvim`.
 
 Plugins (managed by `lazy.nvim`):
@@ -61,6 +67,9 @@ stow --dotfiles nvim
 
 # Kitty
 
+![Kitty in lightmode](img/kitty-light.png)
+![Kitty in darkmode](img/kitty-dark.png)
+
 The original config files are at `~/.config/kitty`.
 
 Using default dark theme and customized default light theme.
@@ -75,13 +84,6 @@ To automatically switch kitty themes between light and dark mode, make sure thes
 ```sh
 cd dotfiles
 stow --dotfiles kitty
-```
-
-Add `spawn-at-startup` in `.config/niri/config.kdl`:
-```kdl
-// ...
-spawn-at-startup "~/.local/bin/kitty-theme-auto-switch.sh"
-// ...
 ```
 
 # Darkman
@@ -136,7 +138,7 @@ cd dotfiles
 stow --dotfiles darkman
 ```
 
-(If using the Icon-chaning scripts)
+(If using the Icon-changing scripts)
 ```sh
 cd dotfiles
 mv darkman/.local/share/dark-mode.d/10-set-theme.sh darkman/.local/share/dark-mode.d/10-set-theme.sh.bak
