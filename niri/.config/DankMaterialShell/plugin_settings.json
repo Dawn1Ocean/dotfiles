@@ -1,12 +1,6 @@
 {
   "dankHooks": {
     "enabled": true,
-    "lightMode": ".config/scripts/hook.sh"
-  },
-  "dankPomodoroTimer": {
-    "enabled": false
-  },
-  "powerUsagePlugin": {
-    "enabled": true
+    "lightMode": ".local/bin/hook.sh"
   }
 }
