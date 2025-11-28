@@ -1,0 +1,38 @@
+#!/bin/bash
+
+MODE="$1"
+INIT_FLAG="/tmp/dms_theme_initialized"
+
+case "$MODE" in
+    dark)
+        THEME_ARG="dark"
+        ICON_THEME="breeze-dark"
+        ;;
+    light)
+        THEME_ARG="light"
+        ICON_THEME="breeze"
+        ;;
+    *)
+        echo "Usage: $0 {dark|light}"
+        exit 1
+        ;;
+esac
+
+try_restart_dms() {
+    dms restart
+    sleep 0.2
+    dms ipc call theme "$THEME_ARG"
+}
+
+sed -i "s/^icon_theme=.*/icon_theme=$ICON_THEME/" ~/.config/qt6ct/qt6ct.conf
+
+niri msg action do-screen-transition -d 2500 &
+sleep 0.01
+
+if [ ! -f "$INIT_FLAG" ]; then
+    try_restart_dms
+    try_restart_dms
+    touch "$INIT_FLAG"
+else
+    try_restart_dms
+fi

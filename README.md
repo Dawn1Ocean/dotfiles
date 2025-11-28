@@ -117,15 +117,32 @@ I wrote a script to restart and change the icons of dms monitor changes in the s
 
 ```sh
 #!/bin/bash
+
+MODE="$1"
 INIT_FLAG="/tmp/dms_theme_initialized"
+
+case "$MODE" in
+    dark)
+        THEME_ARG="dark"
+        ICON_THEME="breeze-dark"
+        ;;
+    light)
+        THEME_ARG="light"
+        ICON_THEME="breeze"
+        ;;
+    *)
+        echo "Usage: $0 {dark|light}"
+        exit 1
+        ;;
+esac
 
 try_restart_dms() {
     dms restart
     sleep 0.2
-    dms ipc call theme dark
+    dms ipc call theme "$THEME_ARG"
 }
 
-sed -i 's/^icon_theme=.*/icon_theme=breeze-dark/' ~/.config/qt6ct/qt6ct.conf
+sed -i "s/^icon_theme=.*/icon_theme=$ICON_THEME/" ~/.config/qt6ct/qt6ct.conf
 
 niri msg action do-screen-transition -d 2500 &
 sleep 0.01
@@ -144,10 +161,22 @@ If you are not concerned about the color of the icon, use this script instead, i
 ```sh
 #!/bin/bash
 
-dms ipc call theme dark
-niri msg action do-screen-transition -d 500 &
-sed -i 's/^icon_theme=.*/icon_theme=breeze-dark/' ~/.config/qt6ct/qt6ct.conf
+case "$1" in
+    dark)
+        dms ipc call theme dark
+        sed -i 's/^icon_theme=.*/icon_theme=breeze-dark/' ~/.config/qt6ct/qt6ct.conf
+        ;;
+    light)
+        dms ipc call theme light
+        sed -i 's/^icon_theme=.*/icon_theme=breeze/' ~/.config/qt6ct/qt6ct.conf
+        ;;
+    *)
+        echo "Usage: $0 {dark|light}"
+        exit 1
+        ;;
+esac
 
+niri msg action do-screen-transition -d 500 &
 ```
 
 ## Deploy
@@ -159,11 +188,12 @@ stow --dotfiles darkman
 
 (If using the Icon-changing scripts)
 ```sh
-cd dotfiles
-mv darkman/.local/share/dark-mode.d/10-set-theme.sh darkman/.local/share/dark-mode.d/10-set-theme.sh.bak
-mv darkman/.local/share/light-mode.d/10-set-theme.sh darkman/.local/share/light-mode.d/10-set-theme.sh.bak
-mv darkman/.local/share/dark-mode.d/10-set-theme-icon.sh.bak darkman/.local/share/dark-mode.d/10-set-theme-icon.sh
-mv darkman/.local/share/light-mode.d/10-set-theme-icon.sh.bak darkman/.local/share/light-mode.d/10-set-theme-icon.sh
+cd dotfiles/darkman/.local/share/darkman
+mv niri-theme.sh niri-theme.sh.bak
+mv niri-theme-icon.sh.bak niri-theme-icon.sh
+chmod +x niri-theme-icon.sh
+chmod -x niri-theme.sh.bak
+cd ../../../..
 stow --dotfiles darkman
 ```
 
