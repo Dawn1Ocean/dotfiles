@@ -4,6 +4,7 @@ niri/.config/DankMaterialShell/plugins/.repos
 kitty/.config/kitty/current-theme.conf
 kitty/.config/kitty/dank-tabs.conf
 kitty/.config/kitty/dank-theme.conf
+kitty/.config/kitty/font-platform.conf
 
 fish/.config/fish/fish_variables
 fish/.config/fish/fish_history
