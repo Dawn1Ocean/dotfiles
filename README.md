@@ -101,7 +101,10 @@ To automatically switch kitty themes between light and dark mode, make sure thes
 ## Deploy
 
 ```sh
-cd dotfiles
+cd dotfiles/kitty/.config/kitty
+ln -s font-mac.conf font-platform.conf # On macOS
+ln -s font-linux.conf font-platform.conf # On Linux
+cd ../../..
 stow --dotfiles kitty
 ```
 
@@ -268,6 +271,6 @@ stow --dotfiles others
 kcmshell6 componentchooser
 ```
 
-In the componentchooser window, choose Terminal Simulator to `Smart Terminal (Niri / KDE)`.
+In the `componentchooser` window, choose Terminal Simulator to `Smart Terminal (Niri / KDE)`.
 
 ![componentchooser](img/kcmshell.png)

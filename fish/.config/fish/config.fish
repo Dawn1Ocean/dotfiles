@@ -19,8 +19,8 @@ if status is-interactive
     set -gx VISUAL nvim
 
     function sudo
-        if test "$argv[1]" = "vim"
-            command sudoedit $argv[2..-1]
+        if test "$argv[1]" = "vim" || test "$argv[1]" = "nvim"
+            command sudo -e $argv[2..-1]
         else
             command sudo $argv
         end
