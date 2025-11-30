@@ -2,5 +2,20 @@
   "dankHooks": {
     "enabled": true,
     "lightMode": ".local/bin/hook.sh"
+  },
+  "dankBatteryAlerts": {
+    "enabled": true
+  },
+  "webSearch": {
+    "enabled": true,
+    "defaultEngine": "bing",
+    "searchEngines": []
+  },
+  "commandRunner": {
+    "enabled": true
+  },
+  "calculator": {
+    "enabled": true,
+    "trigger": "="
   }
 }

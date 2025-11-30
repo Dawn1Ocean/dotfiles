@@ -78,12 +78,22 @@
     {
       "id": "nightMode",
       "enabled": true,
-      "width": 50
+      "width": 25
     },
     {
       "id": "darkMode",
       "enabled": true,
-      "width": 50
+      "width": 25
+    },
+    {
+      "id": "colorPicker",
+      "enabled": true,
+      "width": 25
+    },
+    {
+      "id": "idleInhibitor",
+      "enabled": true,
+      "width": 25
     }
   ],
   "showWorkspaceIndex": true,
@@ -96,7 +106,7 @@
   "workspaceNameIcons": {},
   "waveProgressEnabled": true,
   "clockCompactMode": false,
-  "focusedWindowCompactMode": false,
+  "focusedWindowCompactMode": true,
   "runningAppsCompactMode": true,
   "keyboardLayoutNameCompactMode": false,
   "runningAppsCurrentWorkspace": false,
@@ -107,7 +117,11 @@
   "dankBarLeftWidgets": [
     "launcherButton",
     "workspaceSwitcher",
-    "focusedWindow"
+    "focusedWindow",
+    {
+      "id": "network_speed_monitor",
+      "enabled": true
+    }
   ],
   "dankBarCenterWidgets": [
     "music",
@@ -120,14 +134,29 @@
       "enabled": true
     },
     {
-      "id": "clipboard",
+      "id": "cpuUsage",
       "enabled": true
     },
-    "cpuUsage",
-    "memUsage",
-    "notificationButton",
-    "battery",
-    "controlCenterButton"
+    {
+      "id": "memUsage",
+      "enabled": true
+    },
+    {
+      "id": "notificationButton",
+      "enabled": true
+    },
+    {
+      "id": "battery",
+      "enabled": true
+    },
+    {
+      "id": "controlCenterButton",
+      "enabled": true
+    },
+    {
+      "id": "systemUpdate",
+      "enabled": true
+    }
   ],
   "dankBarWidgetOrder": [],
   "appLauncherViewMode": "list",

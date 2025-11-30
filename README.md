@@ -12,13 +12,12 @@ Using `GNU stow` to manage.
 The original config files are at `~/.config/niri`.
 
 Packages（in `paru`）:
-- `dms-shell-bin`, `matugen`, `wl-clipboard`, `cliphist`, `cava`, `qt6-multimedia-ffmpeg`: DankMaterialShell
+- `dms-shell-bin`, `matugen`, `wl-clipboard`, `cliphist`, `cava`, `qt6-multimedia-ffmpeg`, `dsearch-bin`: DankMaterialShell
 - `qt6ct`, `nwg-look`: QT & GTK Theme Manager
 - `xdg-desktop-portal`, `xdg-desktop-portal-gtk`: Desktop API for screen casting etc.
 - `kitty`, `dolphin`: Terminal & File Manager
 - `darkman`: Light & Darkmode support
 - `grim`, `slurp`, `satty`: Screenshot & Editor
-- `fuzzel`: Dmenu app launcher
 
 Plugins (in `DMS`):
 - `Dank Hooks`: The light / dark mode switch hook script is `.local/bin/hook.sh`.
@@ -38,6 +37,13 @@ Plugins (in `DMS`):
         fi
     fi
     ```
+- `Calculator`: Calculator in DMS Spotlight
+    - trigger: `=`
+- `Web Search`: Search Plugin in DMS Spotlight
+    - trigger: `?`
+- `Command Runner`: Calculator in DMS Spotlight
+    - trigger: `>`
+- `Dank Battery Alerts`: Receive notifications when battery level is low
 
 Before apply the `niri/config.kdl` file, please configure the `output` part according to the display or execute `niri msg outputs`:
 
