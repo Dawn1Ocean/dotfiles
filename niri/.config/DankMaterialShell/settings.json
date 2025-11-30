@@ -115,11 +115,20 @@
   "lockDateFormat": "",
   "mediaSize": 1,
   "dankBarLeftWidgets": [
-    "launcherButton",
-    "workspaceSwitcher",
-    "focusedWindow",
+    {
+      "id": "launcherButton",
+      "enabled": true
+    },
+    {
+      "id": "workspaceSwitcher",
+      "enabled": true
+    },
     {
       "id": "network_speed_monitor",
+      "enabled": true
+    },
+    {
+      "id": "focusedWindow",
       "enabled": true
     }
   ],
@@ -230,7 +239,7 @@
   "dankBarOpenOnOverview": true,
   "dankBarVisible": true,
   "dankBarSpacing": 0,
-  "dankBarBottomGap": -4,
+  "dankBarBottomGap": 0,
   "dankBarInnerPadding": -4,
   "dankBarPosition": 0,
   "dankBarSquareCorners": false,

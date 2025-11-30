@@ -16,7 +16,7 @@ The original config files are at `~/.config/niri`.
 Packages（in `paru`）:
 - `dms-shell-bin`, `matugen`, `wl-clipboard`, `cliphist`, `cava`, `qt6-multimedia-ffmpeg`, `dsearch-bin`: DankMaterialShell
 - `qt6ct`, `nwg-look`: QT & GTK Theme Manager
-- `xdg-desktop-portal`, `xdg-desktop-portal-gtk`: Desktop API for screen casting etc.
+- `xdg-desktop-portal`, `xdg-desktop-portal-gtk`, `xdg-desktop-portal-wlr`: Desktop API for screen casting etc.
 - `kitty`, `dolphin`: Terminal & File Manager
 - `darkman`: Light & Darkmode support
 - `grim`, `slurp`, `satty`: Screenshot & Editor
@@ -288,6 +288,20 @@ Then apply at startup:
 // ...
 spawn-sh-at-startup "xrdb -merge ~/.Xresources"
 // ...
+```
+
+## OBS Screencasting
+
+According to [Niri's Official Wiki](https://yalter.github.io/niri/Screencasting.html), we need a working D-Bus session, pipewire, `xdg-desktop-portal-gnome`. I don't want to install any gnome-related packages, so I changed it to `xdg-desktop-portal-wlr`, but it can only capture entire screen other than individual window.
+
+Create `~/.config/xdg-desktop-portal/niri-portals.conf`:
+```conf
+[preferred]
+default=gtk;
+org.freedesktop.impl.portal.Access=gtk;
+org.freedesktop.impl.portal.Notification=gtk;
+org.freedesktop.impl.portal.ScreenCast=wlr
+org.freedesktop.impl.portal.Screenshot=wlr
 ```
 
 ## Deploy
