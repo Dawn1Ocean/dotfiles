@@ -2,6 +2,8 @@
 
 My dotfiles based on Niri and DankMaterialShell.
 
+Focused on minimal configuration and out-of-box experience.
+
 Using `GNU stow` to manage.
 
 # Niri & DMS
@@ -116,7 +118,7 @@ stow --dotfiles kitty
 
 # Darkman
 
-The original script directories are `~/.local/share/dark-mode.d` and `~/.local/share/light-mode.d`.
+The original script directory is `~/.local/share/darkman`.
 
 I wrote a script to restart and change the icons of dms monitor changes in the system `color-scheme` and adjust Kitty's theme accordingly.
 
