@@ -20,8 +20,9 @@ spawn-at-startup "/usr/lib/xdg-desktop-portal" "-r"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "xhost" "+si:localuser:root"
 spawn-at-startup "fcitx5" "--replace" "-d"
-spawn-sh-at-startup "darkman run &"
+spawn-at-startup "~/.local/bin/clipboard-sync.sh"
 
+spawn-sh-at-startup "darkman run &"
 spawn-sh-at-startup "dms ipc call theme toggle && dms ipc call theme toggle"
 spawn-sh-at-startup "xrdb -merge ~/.Xresources"
 

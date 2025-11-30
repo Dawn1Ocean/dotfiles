@@ -304,6 +304,10 @@ org.freedesktop.impl.portal.ScreenCast=wlr
 org.freedesktop.impl.portal.Screenshot=wlr
 ```
 
+## QQ clipboard
+
+I have no idea why `linuxqq` still use X11 clipboard in Wayland session. Thank to [akatsukiro](https://blog.chs.pub/p/25-06-niri/#x11-wayland-%E5%89%AA%E5%88%87%E6%9D%BF%E5%90%8C%E6%AD%A5)'s Script, we can sync contents between xclip and wl-copy.
+
 ## Deploy
 
 ```sh
