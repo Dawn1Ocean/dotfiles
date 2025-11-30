@@ -246,6 +246,8 @@ fisher update
 
 # Others
 
+## Dolphin Context Menu
+
 In Dolphin (KDE Plasma), we can use `Alt + Shift + F4` to Open Terminal in current folder, and the default terminal is Konsole.
 
 In Niri, we want to open current folder with Kitty. I wrote a script and context menu to do this.
@@ -269,6 +271,23 @@ Icon=utilities-terminal
 Type=Application
 Categories=System;TerminalEmulator;
 Terminal=false
+```
+
+## Qt XWayland Application
+
+Some applications running on XWayland, especially using outdated QT version, like `wps-office-365`, has a dpi issue when scaling is applied.
+
+The solution is to create `.Xresources` file and set independent dpi for those applications:
+
+```
+Xft.dpi: 168 // = 96 * scale
+```
+
+Then apply at startup:
+```kdl
+// ...
+spawn-sh-at-startup "xrdb -merge ~/.Xresources"
+// ...
 ```
 
 ## Deploy
