@@ -46,12 +46,12 @@
   "privacyShowScreenShareIcon": false,
   "controlCenterWidgets": [
     {
-      "id": "volumeSlider",
+      "id": "brightnessSlider",
       "enabled": true,
       "width": 50
     },
     {
-      "id": "brightnessSlider",
+      "id": "volumeSlider",
       "enabled": true,
       "width": 50
     },
@@ -86,7 +86,7 @@
       "width": 25
     },
     {
-      "id": "colorPicker",
+      "id": "doNotDisturb",
       "enabled": true,
       "width": 25
     },
@@ -209,7 +209,7 @@
   "batteryMonitorTimeout": 300,
   "batteryLockTimeout": 600,
   "batterySuspendTimeout": 1800,
-  "batterySuspendBehavior": 0,
+  "batterySuspendBehavior": 2,
   "lockBeforeSuspend": false,
   "preventIdleForMedia": false,
   "loginctlLockIntegration": true,
@@ -287,8 +287,8 @@
   "customPowerActionHibernate": "",
   "customPowerActionReboot": "",
   "customPowerActionPowerOff": "",
-  "updaterUseCustomCommand": false,
-  "updaterCustomCommand": "",
+  "updaterUseCustomCommand": true,
+  "updaterCustomCommand": "paru",
   "updaterTerminalAdditionalParams": "",
   "displayNameMode": "system",
   "screenPreferences": {},

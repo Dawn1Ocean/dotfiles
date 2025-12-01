@@ -9,8 +9,9 @@ environment {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--watch" "bash" "-c" "~/.local/bin/clipboard-wltox11.sh"
+spawn-at-startup "bash" "-c" "~/.local/bin/clipboard-x11towl.sh"
 spawn-at-startup "/usr/bin/dms" "run" "--session"
 spawn-at-startup "/usr/lib/pam_kwallet_init"
 spawn-at-startup "dbus-update-activation-environment" "--all"
@@ -19,11 +20,9 @@ spawn-at-startup "/usr/lib/xdg-desktop-portal-gtk"
 spawn-at-startup "/usr/lib/xdg-desktop-portal" "-r"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "xhost" "+si:localuser:root"
-spawn-at-startup "~/.local/bin/clipboard-sync.sh"
 
 spawn-sh-at-startup "sleep 0.5 && fcitx5 --replace -d"
 spawn-sh-at-startup "darkman run &"
-spawn-sh-at-startup "dms ipc call theme toggle && dms ipc call theme toggle"
 spawn-sh-at-startup "xrdb -merge ~/.Xresources"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
