@@ -2,6 +2,9 @@ environment {
     QT_QPA_PLATFORMTHEME "qt6ct"
     XDG_MENU_PREFIX "arch-"
     DMS_SCREENSHOT_EDITOR "satty"
+    http_proxy "http://127.0.0.1:10808"
+    all_proxy "socks5://127.0.0.1:10808"
+    https_proxy "http://127.0.0.1:10808"
 }
 
 // Add lines like this to spawn processes at startup.
@@ -20,9 +23,10 @@ spawn-at-startup "/usr/lib/xdg-desktop-portal-gtk"
 spawn-at-startup "/usr/lib/xdg-desktop-portal" "-r"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "xhost" "+si:localuser:root"
+spawn-at-startup "darkman" "run"
+spawn-at-startup "fish" "-c" "v2rayn"
 
 spawn-sh-at-startup "sleep 0.5 && fcitx5 --replace -d"
-spawn-sh-at-startup "darkman run &"
 spawn-sh-at-startup "xrdb -merge ~/.Xresources"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
