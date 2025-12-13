@@ -15,11 +15,11 @@ The original config files are at `~/.config/niri`.
 
 Packages（in `paru`）:
 - `dms-shell-bin`, `matugen`, `wl-clipboard`, `cliphist`, `cava`, `qt6-multimedia-ffmpeg`, `dsearch-bin`: DankMaterialShell
-- `qt6ct`, `nwg-look`: QT & GTK Theme Manager
-- `xdg-desktop-portal`, `xdg-desktop-portal-gtk`, `xdg-desktop-portal-wlr`: Desktop API for screen casting etc.
+- `nwg-look`: GTK Theme Manager
+- `xdg-desktop-portal`, `xdg-desktop-portal-gtk`, `xdg-desktop-portal-gnome`: Desktop API for screen casting etc.
 - `kitty`, `dolphin`: Terminal & File Manager
 - `darkman`: Light & Darkmode support
-- `grim`, `slurp`, `satty`: Screenshot & Editor
+- `satty`: Screenshot Editor
 
 Plugins (in `DMS`):
 - `Dank Hooks`: The light / dark mode switch hook script is `.local/bin/hook.sh`.
@@ -29,13 +29,14 @@ Plugins (in `DMS`):
     HOOK_NAME="$1"  # e.g., "onWallpaperChanged"
     HOOK_VALUE="$2" # e.g., "/path/to/wallpaper.jpg"
 
-    if [ $HOOK_NAME = "onLightModeChanged" ]; then
-        if [ $HOOK_VALUE = "light" ]; then
+    if [ "$HOOK_NAME" = "onLightModeChanged" ]; then
+        if [ "$HOOK_VALUE" = "light" ]; then
             niri msg action do-screen-transition -d 600 &
-            sed -i 's/^icon_theme=.*/icon_theme=breeze/' ~/.config/qt6ct/qt6ct.conf
-        elif [ $HOOK_VALUE = "dark" ]; then
+            gsettings set org.gnome.desktop.interface icon-theme 'breeze'
+
+        elif [ "$HOOK_VALUE" = "dark" ]; then
             niri msg action do-screen-transition -d 600 &
-            sed -i 's/^icon_theme=.*/icon_theme=breeze-dark/' ~/.config/qt6ct/qt6ct.conf
+            gsettings set org.gnome.desktop.interface icon-theme 'breeze-dark'
         fi
     fi
     ```
@@ -45,9 +46,12 @@ Plugins (in `DMS`):
     - trigger: `?`
 - `Command Runner`: Calculator in DMS Spotlight
     - trigger: `>`
+- `Emoji & Unicode Launcher`: Emoji & Unicode Picker in DMS Spotlight
+    - trigger: `:`
 - `Dank Battery Alerts`: Receive notifications when battery level is low
+- `ASUS Control Center`: Manage Power Profiles and GPU Modes for ASUS Laptops
 
-Before apply the `niri/config.kdl` file, please configure the `output` part according to the display or execute `niri msg outputs`:
+Before apply the config files, please configure the `outputs.kdl` file according to the display or execute `niri msg outputs`:
 
 ```kdl
 // ...
@@ -153,7 +157,7 @@ try_restart_dms() {
     dms ipc call theme "$THEME_ARG"
 }
 
-sed -i "s/^icon_theme=.*/icon_theme=$ICON_THEME/" ~/.config/qt6ct/qt6ct.conf
+gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME"
 
 niri msg action do-screen-transition -d 2500 &
 sleep 0.01
@@ -292,7 +296,7 @@ spawn-sh-at-startup "xrdb -merge ~/.Xresources"
 
 ## OBS Screencasting
 
-According to [Niri's Official Wiki](https://yalter.github.io/niri/Screencasting.html), we need a working D-Bus session, pipewire, `xdg-desktop-portal-gnome`. I don't want to install any gnome-related packages, so I changed it to `xdg-desktop-portal-wlr`, but it can only capture entire screen other than individual window.
+According to [Niri's Official Wiki](https://yalter.github.io/niri/Screencasting.html), we need a working D-Bus session, pipewire, `xdg-desktop-portal-gnome`. If you don't want to install any gnome-related packages, you could change it to `xdg-desktop-portal-wlr`, but it can only capture entire screen other than individual window.
 
 Create `~/.config/xdg-desktop-portal/niri-portals.conf`:
 ```conf
@@ -300,8 +304,18 @@ Create `~/.config/xdg-desktop-portal/niri-portals.conf`:
 default=gtk;
 org.freedesktop.impl.portal.Access=gtk;
 org.freedesktop.impl.portal.Notification=gtk;
-org.freedesktop.impl.portal.ScreenCast=wlr
-org.freedesktop.impl.portal.Screenshot=wlr
+org.freedesktop.impl.portal.ScreenCast=wlr;
+org.freedesktop.impl.portal.Screenshot=wlr;
+```
+
+When using `xdg-desktop-portal-gnome`:
+```conf
+[preferred]
+default=gtk;
+org.freedesktop.impl.portal.Access=gtk;
+org.freedesktop.impl.portal.Notification=gtk;
+org.freedesktop.impl.portal.ScreenCast=gnome;
+org.freedesktop.impl.portal.Screenshot=gnome;
 ```
 
 ## QQ clipboard

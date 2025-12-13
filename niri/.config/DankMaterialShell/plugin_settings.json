@@ -17,5 +17,11 @@
   "calculator": {
     "enabled": true,
     "trigger": "="
+  },
+  "emojiLauncher": {
+    "enabled": true
+  },
+  "asusControlCenter": {
+    "enabled": true
   }
 }

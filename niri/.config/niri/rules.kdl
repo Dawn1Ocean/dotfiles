@@ -24,12 +24,6 @@ window-rule {
     open-fullscreen false
 }
 
-/-window-rule {
-    match app-id="wechat"
-    match title="^$"
-    open-floating true
-}
-
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {

@@ -249,8 +249,7 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty --filename -"; }
-    // Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn-sh "niri msg action screenshot && wl-paste | satty --filename -"; } 
+    Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn-sh "dms screenshot --no-file --stdout | satty --filename -"; } 
 
     // Print { screenshot; }
     // Ctrl+Print { screenshot-screen; }

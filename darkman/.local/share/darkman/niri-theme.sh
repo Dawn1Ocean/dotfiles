@@ -1,13 +1,14 @@
 #!/bin/bash
+#!/bin/bash
 
 case "$1" in
     dark)
         dms ipc call theme dark
-        sed -i 's/^icon_theme=.*/icon_theme=breeze-dark/' ~/.config/qt6ct/qt6ct.conf
+        gsettings set org.gnome.desktop.interface icon-theme 'breeze-dark'
         ;;
     light)
         dms ipc call theme light
-        sed -i 's/^icon_theme=.*/icon_theme=breeze/' ~/.config/qt6ct/qt6ct.conf
+        gsettings set org.gnome.desktop.interface icon-theme 'breeze'
         ;;
     *)
         echo "Usage: $0 {dark|light}"
