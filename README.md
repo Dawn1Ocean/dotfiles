@@ -17,7 +17,7 @@ Packages（in `paru`）:
 - `dms-shell-bin`, `matugen`, `wl-clipboard`, `cliphist`, `cava`, `qt6-multimedia-ffmpeg`, `dsearch-bin`: DankMaterialShell
 - `nwg-look`: GTK Theme Manager
 - `xdg-desktop-portal`, `xdg-desktop-portal-gtk`, `xdg-desktop-portal-gnome`: Desktop API for screen casting etc.
-- `kitty`, `dolphin`: Terminal & File Manager
+- `kitty`, `dolphin` / `yazi`: Terminal & File Manager
 - `darkman`: Light & Darkmode support
 - `satty`: Screenshot Editor
 
@@ -211,6 +211,30 @@ chmod -x niri-theme.sh.bak
 cd ../../../..
 stow --dotfiles darkman
 ```
+
+# Yazi
+
+![Yazi in lightmode](img/yazi-light.png)
+![Yazi in darkmode](img/yazi-dark.png)
+
+The original config files are at `~/.config/yazi`.
+
+Using Catppuccin latte / mocha flavor.
+
+## Deploy
+
+Install Catppuccin flavors:
+
+```sh
+ya pkg add yazi-rs/flavors:catppuccin-latte
+ya pkg add yazi-rs/flavors:catppuccin-mocha
+```
+
+```sh
+cd dotfiles
+stow --dotfiles yazi
+```
+
 
 # Fuzzel
 

@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on   = [ "<A-S-F4>" ]
+run  = "shell 'kitty' --orphan" 
+desc = "Open terminal here"

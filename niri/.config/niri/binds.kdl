@@ -19,7 +19,7 @@ binds {
     Mod+D hotkey-overlay-title="Open Spotlight: dms" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: dms lock" { spawn "dms" "ipc" "call" "lock" "lock"; }
     // Mod+V hotkey-overlay-title="Open Clipboard: dms"{ spawn "dms" "ipc" "call" "clipboard" "toggle"; }
-    Mod+E hotkey-overlay-title="Open a File Manager: dolphin"{ spawn "dolphin"; }
+    Mod+E hotkey-overlay-title="Open a File Manager: yazi"{ spawn "kitty" "--class" "yazi-window" "yazi"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

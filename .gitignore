@@ -11,4 +11,7 @@ fish/.config/fish/fish_variables
 fish/.config/fish/fish_history
 fish/.config/fish/generated_completions
 
+yazi/.config/yazi/flavors
+yazi/.config/yazi/package.toml
+
 .DS_Store
