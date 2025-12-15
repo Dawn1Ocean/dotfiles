@@ -2,3 +2,17 @@
 on   = [ "<A-S-F4>" ]
 run  = "shell 'kitty' --orphan" 
 desc = "Open terminal here"
+
+[[mgr.prepend_keymap]]
+on   = [ "p" ]
+run  = "plugin ucp paste" 
+desc = "Paste"
+
+[[mgr.prepend_keymap]]
+on   = [ "y" ]
+run  = "plugin ucp copy" 
+desc = "Copy"
+
+[[mgr.prepend_keymap]]
+on  = "M"
+run = "plugin mount"

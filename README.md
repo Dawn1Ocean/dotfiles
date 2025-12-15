@@ -219,13 +219,20 @@ stow --dotfiles darkman
 
 The original config files are at `~/.config/yazi`.
 
-Using Catppuccin latte / mocha flavor.
+
+Plugins & Flavors:
+- `"simla33/ucp"`: Integrates yazi copy / paste with system clipboard similar to GUI file managers.
+- `"yazi-rs/plugins:mount"`: A mount manager for Yazi, providing disk mount, unmount, and eject functionality.
+- `"yazi-rs/flavors:catppuccin-latte"`: Catppuccin latte for yazi.
+- `"yazi-rs/flavors:catppuccin-mocha"`: Catppuccin mocha for yazi.
 
 ## Deploy
 
 Install Catppuccin flavors:
 
 ```sh
+ya pkg add simla33/ucp
+ya pkg add yazi-rs/plugins:mount
 ya pkg add yazi-rs/flavors:catppuccin-latte
 ya pkg add yazi-rs/flavors:catppuccin-mocha
 ```
