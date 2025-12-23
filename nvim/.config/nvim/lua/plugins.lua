@@ -41,11 +41,8 @@ require("lazy").setup({
         "ethanholz/nvim-lastplace",
         config = function()
           require("nvim-lastplace").setup({
-        -- 忽略的特殊 buffer 类型（如帮助文档、快速修复窗口）
           lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-        -- 忽略的文件类型（如 git 提交、svn 提交信息）
           lastplace_ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" },
-        -- 是否在跳转时自动打开折叠
           lastplace_open_folds = true,
         })
         end,
@@ -138,13 +135,7 @@ require("lazy").setup({
         },
         opts_extend = { "sources.default" },
     },
-	-- Code snippet engine
-	{
-		"L3MON4D3/LuaSnip",
-		version = "v2.*",
-	},
 	-- LSP manager
     { "mason-org/mason.nvim", opts = {} },
-	"neovim/nvim-lspconfig",
     "xiyaowong/transparent.nvim",
 })
