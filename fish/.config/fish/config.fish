@@ -29,5 +29,10 @@ if status is-interactive
             command sudo $argv
         end
     end
+
+    if type -q rg
+        set -gx FZF_DEFAULT_COMMAND 'rg --files'
+        set -gx FZF_DEFAULT_OPTS '-m'
+    end
 end
 
