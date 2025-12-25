@@ -8,8 +8,7 @@ Using `GNU stow` to manage.
 
 # Niri & DMS
 
-![Niri in lightmode](img/niri-light.png)
-![Niri in darkmode](img/niri-dark.png)
+![Niri](img/niri.png)
 
 The original config files are at `~/.config/niri`.
 
@@ -74,8 +73,7 @@ stow --dotfiles niri
 
 Inspired by [MartinLwx](https://martinlwx.github.io/zh-cn/config-neovim-from-scratch/). Thanks!
 
-![Nvim in lightmode](img/nvim-light.png)
-![Nvim in darkmode](img/nvim-dark.png)
+![Nvim](img/nvim.png)
 
 The original config files are at `~/.config/nvim`.
 
@@ -94,8 +92,7 @@ stow --dotfiles nvim
 
 # Kitty
 
-![Kitty in lightmode](img/kitty-light.png)
-![Kitty in darkmode](img/kitty-dark.png)
+![Kitty](img/kitty.png)
 
 The original config files are at `~/.config/kitty`.
 
@@ -210,8 +207,7 @@ stow --dotfiles darkman
 
 # Yazi
 
-![Yazi in lightmode](img/yazi-light.png)
-![Yazi in darkmode](img/yazi-dark.png)
+![Yazi](img/yazi.png)
 
 The original config files are at `~/.config/yazi`.
 

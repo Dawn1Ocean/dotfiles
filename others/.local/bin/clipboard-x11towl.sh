@@ -23,14 +23,14 @@ log_sync() {
     local format=$3
 
     case "$direction" in
-        "x11->wl")
-            echo -e "${COLOR_CYAN}[$(date '+%H:%M:%S')]${COLOR_RESET} ${COLOR_GREEN}✓${COLOR_RESET} X11 → Wayland | ${COLOR_YELLOW}${type}${COLOR_RESET}${format}"
-            ;;
+    "x11->wl")
+        echo -e "${COLOR_CYAN}[$(date '+%H:%M:%S')]${COLOR_RESET} ${COLOR_GREEN}✓${COLOR_RESET} X11 → Wayland | ${COLOR_YELLOW}${type}${COLOR_RESET}${format}"
+        ;;
     esac
 }
 
 for cmd in xclip wl-copy clipnotify cmp; do
-    if ! command -v "$cmd" &> /dev/null; then
+    if ! command -v "$cmd" &>/dev/null; then
         echo "Error: Missing dependency '$cmd'"
         exit 1
     fi
@@ -43,7 +43,7 @@ clipboard_sync() {
     local current_wl_img="$TMP_DIR/curr_wl.img"
     local last_x11_img="$TMP_DIR/last_x11.img"
     local last_text=""
-    
+
     rm -f "$LOCK_FILE"
 
     while clipnotify; do
@@ -69,20 +69,20 @@ clipboard_sync() {
         fi
 
         if [[ -n "$mime_type" ]]; then
-            xclip -selection clipboard -t "$mime_type" -o > "$current_x11_img" 2>/dev/null
-            wl-paste -t "$mime_type" > "$current_wl_img" 2>/dev/null
-            
+            xclip -selection clipboard -t "$mime_type" -o >"$current_x11_img" 2>/dev/null
+            wl-paste -t "$mime_type" >"$current_wl_img" 2>/dev/null
+
             if cmp -s "$current_x11_img" "$current_wl_img"; then
                 continue
             fi
-            
+
             if ! cmp -s "$current_x11_img" "$last_x11_img"; then
-                wl-copy -t "$mime_type" < "$current_x11_img"
+                wl-copy -t "$mime_type" <"$current_x11_img"
                 cp "$current_x11_img" "$last_x11_img"
                 log_sync "x11->wl" "Image" " ($mime_type)"
                 img_synced=true
             fi
-            continue 
+            continue
         fi
 
         # -------- Text sync --------
@@ -93,7 +93,7 @@ clipboard_sync() {
             if [[ -n "$x11_text" && "$x11_text" != "$last_text" && "$x11_text" != "$current_text" ]]; then
                 echo -n "$x11_text" | wl-copy --type text/plain
                 last_text="$x11_text"
-                
+
                 local preview="${x11_text:0:50}"
                 preview="${preview//$'\n'/↵}"
                 preview="${preview//$'\r'/}"
