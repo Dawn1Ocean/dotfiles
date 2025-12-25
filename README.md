@@ -277,6 +277,34 @@ fisher update
 
 # Others
 
+## Environment config with KDE
+
+When DMS is initiated as a system service, configuring environment variables within Niri's `.kdl` file is ineffective; they must be set before Niri starts. However, certain variables like `QT_QPA_PLATFORMTHEME` would prevent KDE from launching. Therefore, it is necessary to modify the `niri.desktop` file used by SDDM to execute a custom wrapper script (at `~/.local/bin/niri-session.sh`), which sets the required environment variables for both Niri and DMS.
+
+```sh
+#!/bin/bash
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=gtk3
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export XDG_MENU_PREFIX=arch-
+export http_proxy=http://127.0.0.1:10808
+export https_proxy=http://127.0.0.1:10808
+export all_proxy=socks5://127.0.0.1:10808
+# other envs...
+
+exec niri-session
+```
+
+Modify `/usr/share/wayland-sessions/niri.desktop` at the same time:
+```desktop
+[Desktop Entry]
+Name=Niri
+Comment=A scrollable-tiling Wayland compositor
+Exec=/home/<username>/.local/bin/niri-session.sh
+Type=Application
+DesktopNames=niri
+```
+
 ## Dolphin Context Menu
 
 In Dolphin (KDE Plasma), we can use `Alt + Shift + F4` to Open Terminal in current folder, and the default terminal is Konsole.
