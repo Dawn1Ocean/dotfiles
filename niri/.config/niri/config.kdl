@@ -4,7 +4,7 @@
 // https://yalter.github.io/niri/Configuration:-Introduction
 
 include "input.kdl"
-include "outputs.kdl"
+include "touchpad.kdl"
 include "layout.kdl"
 include "animations.kdl"
 include "binds.kdl"
@@ -13,5 +13,6 @@ include "misc.kdl"
 include "dms/binds.kdl"
 include "dms/alttab.kdl"
 include "dms/colors.kdl"
+include "dms/outputs.kdl"
 
 include "rules.kdl"

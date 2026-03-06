@@ -1,4 +1,8 @@
 niri/.config/niri/dms/colors.kdl
+niri/.config/niri/dms/alttab.kdl
+niri/.config/niri/dms/layout.kdl
+niri/.config/niri/dms/outputs.kdl
+niri/.config/niri/dms/wpblur.kdl
 niri/.config/niri/outputs.kdl
 niri/.config/DankMaterialShell/plugins
 
@@ -14,5 +18,7 @@ fish/.config/fish/generated_completions
 yazi/.config/yazi/flavors
 yazi/.config/yazi/plugins
 yazi/.config/yazi/package.toml
+
+nvim/.config/nvim/lazy-lock.json
 
 .DS_Store

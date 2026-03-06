@@ -9,7 +9,9 @@
   "webSearch": {
     "enabled": true,
     "defaultEngine": "bing",
-    "searchEngines": []
+    "searchEngines": [],
+    "trigger": ";",
+    "noTrigger": false
   },
   "commandRunner": {
     "enabled": true
