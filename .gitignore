@@ -12,6 +12,9 @@ kitty/.config/kitty/current-theme.conf
 kitty/.config/kitty/dank-tabs.conf
 kitty/.config/kitty/dank-theme.conf
 kitty/.config/kitty/font-platform.conf
+kitty/.config/kitty/dark-theme.auto.conf
+kitty/.config/kitty/light-theme.auto.conf
+kitty/.config/kitty/no-preference-theme.auto.conf
 
 fish/.config/fish/fish_variables
 fish/.config/fish/fish_history
@@ -22,6 +25,7 @@ yazi/.config/yazi/plugins
 yazi/.config/yazi/package.toml
 
 nvim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/colors/dms.lua
 nvim/.config/nvim/lua/plugins/dankcolors.lua
 
 .DS_Store

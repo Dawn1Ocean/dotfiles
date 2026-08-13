@@ -27,6 +27,21 @@ return {
       vim.cmd.colorscheme("catppuccin")
     end,
   },
+  {
+    "f-person/auto-dark-mode.nvim",
+    lazy = false,
+    config = function()
+      require("auto-dark-mode").setup({
+        update_interval = 1000,
+        set_dark_mode = function()
+          vim.o.background = "dark"
+        end,
+        set_light_mode = function()
+          vim.o.background = "light"
+        end,
+      })
+    end,
+  },
   -- change trouble config
   {
     "folke/trouble.nvim",
