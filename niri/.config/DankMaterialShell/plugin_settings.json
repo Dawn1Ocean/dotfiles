@@ -11,10 +11,14 @@
     "defaultEngine": "bing",
     "searchEngines": [],
     "trigger": ";",
-    "noTrigger": false
+    "noTrigger": false,
+    "disabledEngines": []
   },
   "commandRunner": {
-    "enabled": true
+    "enabled": true,
+    "history": [
+      "reboot"
+    ]
   },
   "calculator": {
     "enabled": true,

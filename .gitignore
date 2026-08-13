@@ -4,7 +4,9 @@ niri/.config/niri/dms/layout.kdl
 niri/.config/niri/dms/outputs.kdl
 niri/.config/niri/dms/wpblur.kdl
 niri/.config/niri/outputs.kdl
+niri/.config/niri/*backup*
 niri/.config/DankMaterialShell/plugins
+niri/.config/DankMaterialShell/.*
 
 kitty/.config/kitty/current-theme.conf
 kitty/.config/kitty/dank-tabs.conf
@@ -20,5 +22,6 @@ yazi/.config/yazi/plugins
 yazi/.config/yazi/package.toml
 
 nvim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/lua/plugins/dankcolors.lua
 
 .DS_Store

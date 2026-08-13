@@ -5,7 +5,7 @@
 
 include "input.kdl"
 include "touchpad.kdl"
-include "layout.kdl"
+// include "layout.kdl"
 include "animations.kdl"
 include "binds.kdl"
 include "misc.kdl"
@@ -16,3 +16,4 @@ include "dms/colors.kdl"
 include "dms/outputs.kdl"
 
 include "rules.kdl"
+include "dms/layout.kdl"

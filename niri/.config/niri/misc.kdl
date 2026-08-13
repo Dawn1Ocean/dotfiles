@@ -11,6 +11,7 @@ environment {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
+spawn-at-startup "kwalletd6"
 spawn-at-startup "/usr/lib/pam_kwallet_init"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "/usr/lib/xdg-desktop-portal-gtk"
