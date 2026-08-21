@@ -19,6 +19,7 @@ kitty/.config/kitty/no-preference-theme.auto.conf
 fish/.config/fish/fish_variables
 fish/.config/fish/fish_history
 fish/.config/fish/generated_completions
+fish/.config/fish/completions/copilot.fish
 
 yazi/.config/yazi/flavors
 yazi/.config/yazi/plugins

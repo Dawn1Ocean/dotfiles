@@ -280,7 +280,7 @@
   "lockDateFormat": "",
   "greeterRememberLastSession": true,
   "greeterRememberLastUser": true,
-  "greeterAutoLogin": true,
+  "greeterAutoLogin": false,
   "greeterEnableFprint": false,
   "greeterEnableU2f": false,
   "greeterWallpaperPath": "",
