@@ -24,6 +24,19 @@ window-rule {
     open-fullscreen false
 }
 
+window-rule {
+    match app-id="^$" title="^$"
+
+    open-floating true
+    open-focused false
+
+    default-floating-position x=12 y=12 relative-to="bottom-right"
+
+    focus-ring {
+        off
+    }
+}
+
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {

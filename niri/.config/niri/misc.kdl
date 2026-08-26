@@ -21,6 +21,9 @@ spawn-at-startup "xhost" "+si:localuser:root"
 // spawn-at-startup "darkman" "run" // DMS featured auto dark mode control at v1.4
 spawn-at-startup "fish" "-c" "v2rayn"
 
+// Keep the native Wayland clipboard and Linux QQ's X11 clipboard in sync.
+spawn-at-startup "/home/dean/.local/bin/clipboard-bridge.sh"
+
 spawn-sh-at-startup "sleep 0.5 && fcitx5 --replace -d"
 spawn-sh-at-startup "xrdb -merge ~/.Xresources"
 

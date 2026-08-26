@@ -20,6 +20,7 @@ fish/.config/fish/fish_variables
 fish/.config/fish/fish_history
 fish/.config/fish/generated_completions
 fish/.config/fish/completions/copilot.fish
+fish/.config/fish/conf.d/fish_frozen_theme.fish
 
 yazi/.config/yazi/flavors
 yazi/.config/yazi/plugins
@@ -28,5 +29,8 @@ yazi/.config/yazi/package.toml
 nvim/.config/nvim/lazy-lock.json
 nvim/.config/nvim/colors/dms.lua
 nvim/.config/nvim/lua/plugins/dankcolors.lua
+
+others/.local/share/applications/*
+!others/.local/share/applications/smart-terminal.desktop
 
 .DS_Store
