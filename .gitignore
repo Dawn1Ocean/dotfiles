@@ -1,7 +1,10 @@
 niri/.config/niri/dms/colors.kdl
 niri/.config/niri/dms/alttab.kdl
+niri/.config/niri/dms/input.kdl
+niri/.config/niri/dms/cursor.kdl
 niri/.config/niri/dms/layout.kdl
 niri/.config/niri/dms/outputs.kdl
+niri/.config/niri/dms/windowrules.kdl
 niri/.config/niri/dms/wpblur.kdl
 niri/.config/niri/outputs.kdl
 niri/.config/niri/*backup*
